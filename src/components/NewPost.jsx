@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classes from "./NewPost.module.css";
 
-function NewPost({ setBodyText, changeBodyHandler }) {
+function NewPost({ setBodyText, changeBodyHandler, changeAuthorHandler }) {
   // const [bodyText, setBodyText] = useState("");
 
   // function changeBodyHandler(event) {
@@ -18,7 +18,7 @@ function NewPost({ setBodyText, changeBodyHandler }) {
       {/* <p>{bodyText}</p> */}
       <p>
         <label htmlFor="name">Your name</label>
-        <input type="text" id="name" required />
+        <input type="text" id="name" required onChange={changeAuthorHandler} />
       </p>
     </form>
   );

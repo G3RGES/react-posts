@@ -7,6 +7,7 @@ import Modal from "./Modal";
 const PostsList = () => {
   const [bodyText, setBodyText] = useState("");
   const [authorName, setAuthorName] = useState("");
+  const [modalIsVisible, setModalIsVisible] = useState(true);
 
   function changeBodyHandler(event) {
     // console.log(event.target.value); //* TESTING
@@ -17,15 +18,21 @@ const PostsList = () => {
     setAuthorName(event.target.value);
   }
 
+  function showModal() {
+    setModalIsVisible(false);
+  }
+
   return (
     <>
-      <Modal>
-        <NewPost
-          setBodyText={setBodyText}
-          changeBodyHandler={changeBodyHandler}
-          changeAuthorHandler={changeAuthorHandler}
-        />
-      </Modal>
+      {modalIsVisible === true && (
+        <Modal showModal={showModal}>
+          <NewPost
+            setBodyText={setBodyText}
+            changeBodyHandler={changeBodyHandler}
+            changeAuthorHandler={changeAuthorHandler}
+          />
+        </Modal>
+      )}
 
       <ul className={classes.posts}>
         <Post author={authorName} body={bodyText} />

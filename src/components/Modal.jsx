@@ -1,10 +1,10 @@
 import React from "react";
 import classes from "./Modal.module.css";
 
-const Modal = ({ children, showModal }) => {
+const Modal = ({ children, hideModal }) => {
   return (
     <>
-      <div className={classes.backdrop} onClick={showModal} />
+      <div className={classes.backdrop} onClick={hideModal} />
       <dialog open className={classes.modal}>
         {children}
       </dialog>

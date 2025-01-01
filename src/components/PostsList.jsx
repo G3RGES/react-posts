@@ -4,10 +4,9 @@ import classes from "./PostsList.module.css";
 import NewPost from "./NewPost";
 import Modal from "./Modal";
 
-const PostsList = () => {
+const PostsList = ({ modalVisible, hideModal }) => {
   const [bodyText, setBodyText] = useState("");
   const [authorName, setAuthorName] = useState("");
-  const [modalIsVisible, setModalIsVisible] = useState(true);
 
   function changeBodyHandler(event) {
     // console.log(event.target.value); //* TESTING
@@ -18,14 +17,10 @@ const PostsList = () => {
     setAuthorName(event.target.value);
   }
 
-  function showModal() {
-    setModalIsVisible(false);
-  }
-
   return (
     <>
-      {modalIsVisible === true && (
-        <Modal showModal={showModal}>
+      {modalVisible === true && (
+        <Modal hideModal={hideModal}>
           <NewPost
             setBodyText={setBodyText}
             changeBodyHandler={changeBodyHandler}

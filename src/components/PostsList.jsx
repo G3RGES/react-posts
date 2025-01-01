@@ -25,6 +25,7 @@ const PostsList = ({ modalVisible, hideModal }) => {
             setBodyText={setBodyText}
             changeBodyHandler={changeBodyHandler}
             changeAuthorHandler={changeAuthorHandler}
+            closeModal={hideModal}
           />
         </Modal>
       )}

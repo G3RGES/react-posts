@@ -1,21 +1,33 @@
 import { useState } from "react";
 import classes from "./NewPost.module.css";
 
-function NewPost({
-  setBodyText,
-  changeBodyHandler,
-  changeAuthorHandler,
-  closeModal,
-}) {
-  // const [bodyText, setBodyText] = useState("");
+function NewPost({ closeModal }) {
+  const [bodyText, setBodyText] = useState("");
+  const [authorName, setAuthorName] = useState("");
 
-  // function changeBodyHandler(event) {
-  //   // console.log(event.target.value); //* TESTING
-  //   setBodyText(event.target.value);
-  // }
+  function changeBodyHandler(event) {
+    // console.log(event.target.value); //* TESTING
+    setBodyText(event.target.value);
+  }
+
+  function changeAuthorHandler(event) {
+    setAuthorName(event.target.value);
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    const postData = {
+      body: bodyText,
+      author: authorName,
+    };
+
+    console.log(postData);
+    closeModal();
+  }
 
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <p>
         <label htmlFor="body">Text</label>
         <textarea id="body" required rows={3} onChange={changeBodyHandler} />

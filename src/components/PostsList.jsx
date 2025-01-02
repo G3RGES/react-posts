@@ -5,6 +5,12 @@ import NewPost from "./NewPost";
 import Modal from "./Modal";
 
 const PostsList = ({ modalVisible, hideModal }) => {
+  const [posts, setPosts] = useState([]);
+
+  function addPostsHandler(postsData) {
+    setPosts((existingPosts) => [postsData, ...existingPosts]);
+  }
+
   return (
     <>
       {modalVisible === true && (
@@ -13,15 +19,26 @@ const PostsList = ({ modalVisible, hideModal }) => {
             // changeBodyHandler={changeBodyHandler}
             // changeAuthorHandler={changeAuthorHandler}
             closeModal={hideModal}
+            addPost={addPostsHandler}
           />
         </Modal>
       )}
 
-      <ul className={classes.posts}>
-        {/* <Post author={authorName} body={bodyText} /> */}
-        <Post author="Gerges" body="Welcome to Reactjs Posts" />
-        <Post author="Georges" body="Check out my posts" />
-      </ul>
+      {posts.length > 0 && (
+        <ul className={classes.posts}>
+          {/* <Post author={authorName} body={bodyText} /> */}
+          {posts.map((post) => (
+            <Post key={post.body} author={post.author} body={post.body} />
+          ))}
+        </ul>
+      )}
+
+      {posts.length === 0 && (
+        <div style={{ textAlign: "center", color: "white" }}>
+          <h2>No posts found</h2>
+          <p>Start adding some posts </p>
+        </div>
+      )}
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classes from "./NewPost.module.css";
 
-function NewPost({ closeModal }) {
+function NewPost({ closeModal, addPost }) {
   const [bodyText, setBodyText] = useState("");
   const [authorName, setAuthorName] = useState("");
 
@@ -22,7 +22,8 @@ function NewPost({ closeModal }) {
       author: authorName,
     };
 
-    console.log(postData);
+    // console.log(postData); //* TESTING
+    addPost(postData);
     closeModal();
   }
 

@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import classes from "./NewPost.module.css";
 import Modal from "../components/Modal";
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 
 function NewPost({ closeModal, addPost }) {
   // const [bodyText, setBodyText] = useState("");
@@ -29,8 +29,9 @@ function NewPost({ closeModal, addPost }) {
 
   return (
     <Modal>
-      <form
+      <Form
         className={classes.form}
+        method="post"
         // onSubmit={submitHandler}
       >
         <p>
@@ -39,6 +40,7 @@ function NewPost({ closeModal, addPost }) {
             id="body"
             required
             rows={3}
+            name="body"
             // onChange={changeBodyHandler}
           />
         </p>
@@ -49,6 +51,7 @@ function NewPost({ closeModal, addPost }) {
             type="text"
             id="name"
             required
+            name="author"
             // onChange={changeAuthorHandler}
           />
         </p>
@@ -59,7 +62,7 @@ function NewPost({ closeModal, addPost }) {
           </Link>
           <button>Submit</button>
         </p>
-      </form>
+      </Form>
     </Modal>
   );
 }

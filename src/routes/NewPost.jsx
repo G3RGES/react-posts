@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import classes from "./NewPost.module.css";
 import Modal from "../components/Modal";
-import { Link, Form } from "react-router-dom";
+import { Link, Form, redirect } from "react-router-dom";
 
 function NewPost({ closeModal, addPost }) {
   // const [bodyText, setBodyText] = useState("");
@@ -73,11 +73,13 @@ export async function action({ request }) {
   const formData = await request.formData();
   const postData = Object.fromEntries(formData);
 
-  fetch("http://localhost:8080/posts", {
+  await fetch("http://localhost:8080/posts", {
     method: "POST",
     body: JSON.stringify(postData),
     headers: {
       "Content-Type": "application/json",
     },
   });
+
+  return redirect("..");
 }

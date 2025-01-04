@@ -34,7 +34,8 @@ const PostsList = ({ modalVisible, hideModal }) => {
 
   return (
     <>
-      {modalVisible === true && (
+      {/* //* WILL BE HANDLED BY ROUTER  */}
+      {/* {modalVisible === true && (
         <Modal hideModal={hideModal}>
           <NewPost
             // changeBodyHandler={changeBodyHandler}
@@ -43,7 +44,7 @@ const PostsList = ({ modalVisible, hideModal }) => {
             addPost={addPostsHandler}
           />
         </Modal>
-      )}
+      )} */}
 
       {!isFetching && posts.length > 0 && (
         <ul className={classes.posts}>

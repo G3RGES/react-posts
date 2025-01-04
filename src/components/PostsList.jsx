@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import classes from "./PostsList.module.css";
-import NewPost from "../routes/NewPost";
-import Modal from "./Modal";
+// import NewPost from "../routes/NewPost";
+// import Modal from "./Modal";
 
+//* DON'T NEED modalVisible and hideModal BUT WILL LEAVE THEM JUST INCASE, AND FOR REFERENCE
 const PostsList = ({ modalVisible, hideModal }) => {
   const [posts, setPosts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);

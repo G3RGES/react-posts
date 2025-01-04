@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import classes from "./PostsList.module.css";
-import NewPost from "./NewPost";
+import NewPost from "../routes/NewPost";
 import Modal from "./Modal";
 
 const PostsList = ({ modalVisible, hideModal }) => {

@@ -1,40 +1,46 @@
-import { useState } from "react";
+// import { useState } from "react";
 import classes from "./NewPost.module.css";
 import Modal from "../components/Modal";
 import { Link } from "react-router-dom";
 
 function NewPost({ closeModal, addPost }) {
-  const [bodyText, setBodyText] = useState("");
-  const [authorName, setAuthorName] = useState("");
+  // const [bodyText, setBodyText] = useState("");
+  // const [authorName, setAuthorName] = useState("");
 
-  function changeBodyHandler(event) {
-    // console.log(event.target.value); //* TESTING
-    setBodyText(event.target.value);
-  }
+  // function changeBodyHandler(event) {
+  //   // console.log(event.target.value); //* TESTING
+  //   setBodyText(event.target.value);
+  // }
 
-  function changeAuthorHandler(event) {
-    setAuthorName(event.target.value);
-  }
+  // function changeAuthorHandler(event) {
+  //   setAuthorName(event.target.value);
+  // }
 
-  function submitHandler(event) {
-    event.preventDefault();
+  // function submitHandler(event) {
+  //   event.preventDefault();
 
-    const postData = {
-      body: bodyText,
-      author: authorName,
-    };
+  //   const postData = {
+  //     body: bodyText,
+  //     author: authorName,
+  //   };
 
-    // console.log(postData); //* TESTING
-    addPost(postData);
-    closeModal();
-  }
+  //   // console.log(postData); //* TESTING
+  // }
 
   return (
     <Modal>
-      <form className={classes.form} onSubmit={submitHandler}>
+      <form
+        className={classes.form}
+        // onSubmit={submitHandler}
+      >
         <p>
           <label htmlFor="body">Text</label>
-          <textarea id="body" required rows={3} onChange={changeBodyHandler} />
+          <textarea
+            id="body"
+            required
+            rows={3}
+            // onChange={changeBodyHandler}
+          />
         </p>
         {/* <p>{bodyText}</p> */}
         <p>
@@ -43,7 +49,7 @@ function NewPost({ closeModal, addPost }) {
             type="text"
             id="name"
             required
-            onChange={changeAuthorHandler}
+            // onChange={changeAuthorHandler}
           />
         </p>
 
@@ -59,3 +65,13 @@ function NewPost({ closeModal, addPost }) {
 }
 
 export default NewPost;
+
+export function action() {
+  fetch("http://localhost:8080/posts", {
+    method: "POST",
+    body: JSON.stringify(postsData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}

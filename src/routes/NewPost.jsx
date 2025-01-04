@@ -69,10 +69,13 @@ function NewPost({ closeModal, addPost }) {
 
 export default NewPost;
 
-export function action() {
+export async function action({ request }) {
+  const formData = await request.formData();
+  const postData = Object.fromEntries(formData);
+
   fetch("http://localhost:8080/posts", {
     method: "POST",
-    body: JSON.stringify(postsData),
+    body: JSON.stringify(postData),
     headers: {
       "Content-Type": "application/json",
     },

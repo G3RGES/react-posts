@@ -24,17 +24,17 @@ const PostsList = ({ modalVisible, hideModal }) => {
   //   getPosts();
   // }, []);
 
-  function addPostsHandler(postsData) {
-    fetch("http://localhost:8080/posts", {
-      method: "POST",
-      body: JSON.stringify(postsData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  // function addPostsHandler(postsData) {
+  //   fetch("http://localhost:8080/posts", {
+  //     method: "POST",
+  //     body: JSON.stringify(postsData),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
 
-    setPosts((existingPosts) => [postsData, ...existingPosts]);
-  }
+  //   setPosts((existingPosts) => [postsData, ...existingPosts]);
+  // }
 
   return (
     <>
